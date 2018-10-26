@@ -1,0 +1,63 @@
+<div class="container">
+  <h1>IRCTC BOOKING WINDOW</h1>
+  <!-- <div [hidden]="submitted"> -->
+  <form [formGroup]="TicketForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="from">From</label>
+      <select formControlName="from" required>
+        <option disabled>select station
+        </option>
+        <option *ngFor="let d of fromstation" >{{d}}
+        </option>
+      </select>
+
+    </div>
+    <br>
+
+    <div>
+      <label for="to">To</label>
+      <select formControlName="to" required>
+        <option disabled>select station</option>
+        <option *ngFor="let d of tostation">{{d}}</option>
+      </select>
+
+    </div>
+    <br>
+
+    <div>
+      <label for="date">date</label>
+      <input type="date" name="date">
+    </div>
+    <br>
+
+    <div>
+      <label for="train_no">train-no</label>
+      <input type="text" formControlName="train_no" required>
+
+    </div>
+
+    <br>
+    <div>
+      <label for="no_of_tickets">num-of-tickets</label>
+      <select formControlName="no_of_tickets" required>
+        <option disabled>select no of tickets</option>
+        <option *ngFor="let d of no_of_tickets">{{d}}</option>
+      </select>
+
+    </div>
+    <br>
+    <div>
+      <label for="type">class</label>
+      <select formControlName="type" required>
+        <option disabled>select class</option>
+        <option *ngFor="let d of type">{{d}}</option>
+      </select>
+
+    </div>
+    <br>
+    <div>
+      <button type="submit" [disabled]="!TicketForm.valid">Submit</button>
+    </div>
+    <br>
+  </form>
+</div>
