@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import { structure } from '../structure.model';
+import { Headers } from '@angular/http';
+import { HttpResponse } from 'selenium-webdriver/http';
 @Injectable()
 export class TicketformService {
 
@@ -36,6 +38,12 @@ export class TicketformService {
 
       getdata(): Observable<structure[]> {
         return this.http.get<structure[]>(this.ticketURL)
+      }
+
+      adddata(addticketsofbooking):Observable<structure[]>{
+        console.log("service",addticketsofbooking);
+        
+        return this.http.post<structure[]>(this.ticketURL,addticketsofbooking)
       }
 
 

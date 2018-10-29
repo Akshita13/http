@@ -8,18 +8,25 @@ import { structure } from '../structure.model';
   styleUrls: ['./ticket-booking.component.css']
 })
 export class TicketBookingComponent implements OnInit {
-  bookTicket:structure[];
-  constructor(private ticketFormService:TicketformService) { }
+  bookTicket:any[];
+  constructor(private ticketFormService: TicketformService) { }
 
-  
- 
+
+
   ngOnInit() {
 
     this.ticketFormService.getdata().subscribe(
       data => this.bookTicket = data
     )
 
-  
+      
   }
+
+ 
+
+
+ 
+ 
+  
 
 }

@@ -17,22 +17,22 @@ export class TicketFormComponent implements OnInit {
   public tostation: any[];
   public no_of_tickets: any[];
   public type: any[];
-  submitted:boolean;
-
+  submitted: boolean;
+  public bookticket: any[] = [];
 
 
   TicketForm = this.fb.group({
     from: ['', Validators.required],
-    to: ['',Validators.required],
+    to: ['', Validators.required],
     date: [''],
-      train_no: ['',Validators.required],
-      no_of_tickets: ['',Validators.required],
-      type: ['',Validators.required]
-  
+    train_no: ['', Validators.required],
+    no_of_tickets: ['', Validators.required],
+    type: ['', Validators.required]
+
 
   });
   constructor(private fb: FormBuilder, private ticketservice: TicketformService) {
-    this.submitted=false;
+    this.submitted = false;
   }
 
   ngOnInit() {
@@ -45,12 +45,24 @@ export class TicketFormComponent implements OnInit {
       type: null
     };
 
-    this.fromstation=this.ticketservice.getfromdata();
-    this.tostation=this.ticketservice.gettodata();
-    this.no_of_tickets=this.ticketservice.getticketsdata();
-    this.type=this.ticketservice.getclassdata();
+    this.fromstation = this.ticketservice.getfromdata();
+    this.tostation = this.ticketservice.gettodata();
+    this.no_of_tickets = this.ticketservice.getticketsdata();
+    this.type = this.ticketservice.getclassdata();
   }
-  onSubmit(){
-    this.submitted=true;
+
+
+
+  onSubmit(addticketsofbooking) {
+    console.log(addticketsofbooking);
+
+    this.ticketservice.adddata(addticketsofbooking)
+      .subscribe(ronu => {
+        this.bookticket.push(ronu)
+        this.submitted = true;
+      });
+      
+    this.ticketservice.getdata().subscribe(
+      data => this.bookticket = data)
   }
 }
