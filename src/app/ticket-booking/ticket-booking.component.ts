@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TicketformService } from '../core/ticketform.service';
-import { structure } from '../structure.model';
 
 @Component({
   selector: 'app-ticket-booking',
@@ -14,12 +13,12 @@ export class TicketBookingComponent implements OnInit {
 
 
   ngOnInit() {
-
+    
+  }
+  getdata(){
     this.ticketFormService.getdata().subscribe(
       data => this.bookTicket = data
     )
-
-      
   }
 
  

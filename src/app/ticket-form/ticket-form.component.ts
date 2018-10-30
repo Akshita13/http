@@ -12,12 +12,13 @@ import { TicketformService } from '../core/ticketform.service';
 })
 export class TicketFormComponent implements OnInit {
 
+  submitted = false;
   public form: structure;
   public fromstation: any[];
   public tostation: any[];
   public no_of_tickets: any[];
   public type: any[];
-  submitted: boolean;
+ 
   public bookticket: any[] = [];
 
 
@@ -32,7 +33,7 @@ export class TicketFormComponent implements OnInit {
 
   });
   constructor(private fb: FormBuilder, private ticketservice: TicketformService) {
-    this.submitted = false;
+    
   }
 
   ngOnInit() {
@@ -57,12 +58,11 @@ export class TicketFormComponent implements OnInit {
     console.log(addticketsofbooking);
 
     this.ticketservice.adddata(addticketsofbooking)
-      .subscribe(ronu => {
-        this.bookticket.push(ronu)
+      .subscribe(ticket => {
+        this.bookticket.push(ticket)
         this.submitted = true;
       });
       
-    this.ticketservice.getdata().subscribe(
-      data => this.bookticket = data)
+    
   }
 }

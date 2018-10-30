@@ -10,17 +10,17 @@
         <option *ngFor="let d of fromstation" >{{d}}
         </option>
       </select>
-
+   
     </div>
     <br>
-
+<!-- template  -->
     <div>
       <label for="to">To</label>
       <select formControlName="to" required>
         <option disabled>select station</option>
         <option *ngFor="let d of tostation">{{d}}</option>
       </select>
-
+     
     </div>
     <br>
 
@@ -43,7 +43,7 @@
         <option disabled>select no of tickets</option>
         <option *ngFor="let d of no_of_tickets">{{d}}</option>
       </select>
-
+      
     </div>
     <br>
     <div>
@@ -52,12 +52,12 @@
         <option disabled>select class</option>
         <option *ngFor="let d of type">{{d}}</option>
       </select>
-
+    
     </div>
     <br>
     <div>
-      <input type="submit" [disabled]="!TicketForm.valid">
-      <!-- <button type="submit" [disabled]="!TicketForm.valid">Submit</button> -->
+      <!-- <input type="submit" [disabled]="!TicketForm.valid"> -->
+      <button type="submit" [disabled]="!TicketForm.valid">Submit</button>
     </div>
     <br>
   </form>
